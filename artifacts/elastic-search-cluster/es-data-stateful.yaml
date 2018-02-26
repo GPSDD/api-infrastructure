@@ -8,7 +8,7 @@ metadata:
     role: data
 spec:
   serviceName: elasticsearch-data
-  replicas: 4
+  replicas: 3
   template:
     metadata:
       labels:
@@ -23,29 +23,6 @@ spec:
         command: ["sysctl", "-w", "vm.max_map_count=262144"]
         securityContext:
           privileged: true
-      tolerations:
-      - key: "type"
-        operator: "Equal"
-        value: "db-elastic"
-        effect: "NoSchedule"
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: type
-                operator: In
-                values:
-                - db-elastic
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - data
-            topologyKey: "kubernetes.io/hostname"
       containers:
       - name: es-data
         securityContext:
@@ -57,7 +34,7 @@ spec:
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "16Gi"
+            memory: "3Gi"
         env:
         - name: NAMESPACE
           valueFrom:
@@ -80,7 +57,7 @@ spec:
         - name: HTTP_ENABLE
           value: "false"
         - name: "ES_JAVA_OPTS"
-          value: "-Xms16g -Xmx16g"
+          value: "-Xms3g -Xmx3g"
         - name: "ES_PLUGINS_INSTALL"
           value: "https://github.com/NLPchina/elasticsearch-sql/releases/download/5.5.0.0/elasticsearch-sql-5.5.0.1.zip,repository-s3"
         - name: AWS_ACCESS_KEY_ID
@@ -104,7 +81,7 @@ spec:
   - metadata:
       name: storage
       annotations:
-        volume.beta.kubernetes.io/storage-class: ssd
+        volume.beta.kubernetes.io/storage-class: gp2
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:

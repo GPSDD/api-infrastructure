@@ -7,7 +7,7 @@ metadata:
     component: elasticsearchV2
     role: master
 spec:
-  replicas: 4
+  replicas: 3
   template:
     metadata:
       labels:
@@ -22,29 +22,6 @@ spec:
         command: ["sysctl", "-w", "vm.max_map_count=262144"]
         securityContext:
           privileged: true
-      tolerations:
-      - key: "type"
-        operator: "Equal"
-        value: "db-elastic"
-        effect: "NoSchedule"
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: type
-                operator: In
-                values:
-                - db-elastic
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: role
-                operator: In
-                values:
-                - master
-            topologyKey: "kubernetes.io/hostname"
       containers:
       - name: es-master
         securityContext:
@@ -69,7 +46,7 @@ spec:
         - name: "CLUSTER_NAME"
           value: "myesdbV2"
         - name: "NUMBER_OF_MASTERS"
-          value: "4"
+          value: "3"
         - name: NODE_MASTER
           value: "true"
         - name: NODE_INGEST
