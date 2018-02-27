@@ -9,6 +9,7 @@ spec:
   tls:
   - hosts:
     - load.apihighways.org
+    - doc.apihighways.org
     secretName: apihighways-tls
   rules:
   - host: load.apihighways.org
@@ -17,4 +18,11 @@ spec:
       - path: /
         backend:
           serviceName: nginx
+          servicePort: 80
+  - host: doc.apihighways.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: doc-api-sdgs
           servicePort: 80
