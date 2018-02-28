@@ -10,6 +10,7 @@ spec:
   - hosts:
     - load.apihighways.org
     - doc.apihighways.org
+    - ui.apihighways.org
     secretName: apihighways-tls
   rules:
   - host: load.apihighways.org
@@ -25,4 +26,11 @@ spec:
       - path: /
         backend:
           serviceName: doc-api-sdgs
+          servicePort: 80
+  - host: ui.apihighways.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: ct-ui
           servicePort: 80

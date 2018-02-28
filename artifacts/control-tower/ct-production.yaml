@@ -49,15 +49,15 @@ spec:
           - name: BASICAUTH_USERNAME
             value: vizzuality
           - name: CONFIRM_URL_REDIRECT
-            value: http://www.globalforestwatch.org
+            value: http://apihighways.data4sdgs.org/
           - name: PUBLIC_URL
-            value: http://production-api.globalforestwatch.org
+            value: http://load.apihighways.org
           - name: APP_NAME
             value: "WRI API"
           - name: APP_LOGO
-            value: http://www.wri.org/sites/all/themes/wri/images/logo.png
+            value: http://apihighways.data4sdgs.org/static/img/logo_D4SDG.c3c597d.png
           - name: APP_COLOR
-            value: "#f1b319"
+            value: "#212020"
           - name: CT_MONGO_URI
             valueFrom:
                 secretKeyRef:
