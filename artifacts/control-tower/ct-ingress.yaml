@@ -8,12 +8,12 @@ metadata:
 spec:
   tls:
   - hosts:
-    - load.apihighways.org
+    - api.apihighways.org
     - doc.apihighways.org
     - ui.apihighways.org
     secretName: apihighways-tls
   rules:
-  - host: load.apihighways.org
+  - host: api.apihighways.org
     http:
       paths:
       - path: /
