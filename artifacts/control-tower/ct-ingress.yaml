@@ -11,6 +11,8 @@ spec:
     - api.apihighways.org
     - doc.apihighways.org
     - ui.apihighways.org
+    - www.apihighways.org
+    - apihighways.org
     secretName: apihighways-tls
   rules:
   - host: api.apihighways.org
@@ -34,3 +36,17 @@ spec:
         backend:
           serviceName: ct-ui
           servicePort: 80
+  - host: www.apihighways.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: app-sdgs
+          servicePort: 5000
+  - host: apihighways.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: app-sdgs
+          servicePort: 5000
