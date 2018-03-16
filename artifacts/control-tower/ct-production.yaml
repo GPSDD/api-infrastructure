@@ -55,7 +55,7 @@ spec:
           - name: APP_NAME
             value: "WRI API"
           - name: APP_LOGO
-            value: http://apihighways.data4sdgs.org/static/img/logo_D4SDG.c3c597d.png
+            value: https://apihighways.org/static/logos/logo-api-highways.svg
           - name: APP_COLOR
             value: "#212020"
           - name: CT_MONGO_URI
