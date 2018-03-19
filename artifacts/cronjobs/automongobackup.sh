@@ -45,12 +45,12 @@
 
 # Username to access the mongo server e.g. dbuser
 # Unnecessary if authentication is off
-DBUSERNAME="vizzuality-super"
+#DBUSERNAME="vizzuality-super"
 
 # Password to access the mongo server e.g. password
 # Unnecessary if authentication is off
 # @TODO!
-DBPASSWORD="notset"
+#DBPASSWORD=""
 
 # Database for authentication to the mongo server e.g. admin
 # Unnecessary if authentication is off
