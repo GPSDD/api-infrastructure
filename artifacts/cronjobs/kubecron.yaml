@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: kubecron
-        image: vizzuality/kubecron-sdgs:1.0.1
+        image: vizzuality/kubecron-sdgs:1.0.6
         imagePullPolicy: Always
         args:
         - start

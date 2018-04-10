@@ -39,7 +39,7 @@ RUN touch /var/log/cron.log
 
 COPY entrypoint.sh /cronjobs/entrypoint.sh
 WORKDIR /cronjobs
-ENV PATH ~/.local/bin:$PATH
+ENV PATH /root/.local/bin:$PATH
 
 # Run the command on container startup
 ENTRYPOINT ["./entrypoint.sh"]

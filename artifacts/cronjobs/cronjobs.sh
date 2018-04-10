@@ -1,3 +1,4 @@
+. $HOME/.profile
 # MONGO BACKUPS
 echo "start automongobackup"
 /cronjobs/automongobackup.sh | true
@@ -5,4 +6,5 @@ echo "start automongobackup"
 aws s3 sync /cronjobs/backups/mongo s3://apihighways/db-backups/mongo
 rm -rf /cronjobs/backups/mongo/*
 echo "start autoelasticbackup"
-/cronjobs/autoelasticbackup.sh | true
+/cronjobs/autoelasticbackup.sh
+echo "autoelasticbackup finished"
