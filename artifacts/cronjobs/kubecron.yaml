@@ -1,35 +1,33 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: batch/v1beta1
+kind: CronJob
 metadata:
-  labels:
-    name: kubecron
   name: kubecron
 spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        name: kubecron
+  schedule: "30 01 * * *"
+  jobTemplate:
     spec:
-      containers:
-      - name: kubecron
-        image: vizzuality/kubecron-sdgs:1.0.6
-        imagePullPolicy: Always
-        args:
-        - start
-        env:
-        - name: AWS_ACCESS_KEY_ID
-          valueFrom:
-              secretKeyRef:
-                name: dbsecrets
-                key: BACKUP_S3_ACCESS_KEY
-        - name: AWS_SECRET_ACCESS_KEY
-          valueFrom:
-              secretKeyRef:
-                name: dbsecrets
-                key: BACKUP_S3_SECRET_KEY
-        - name: CT_TOKEN
-          valueFrom:
-              secretKeyRef:
-                name: mssecrets
-                key: CT_TOKEN
+      template:
+        spec:
+          containers:
+          - name: kubecron
+            image: vizzuality/kubecron-sdgs:1.0.22
+            imagePullPolicy: Always
+            args:
+            - start
+            env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                  secretKeyRef:
+                    name: dbsecrets
+                    key: BACKUP_S3_ACCESS_KEY
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                  secretKeyRef:
+                    name: dbsecrets
+                    key: BACKUP_S3_SECRET_KEY
+            - name: CT_TOKEN
+              valueFrom:
+                  secretKeyRef:
+                    name: mssecrets
+                    key: CT_TOKEN
+          restartPolicy: OnFailure
