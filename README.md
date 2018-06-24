@@ -2,6 +2,8 @@
 
 This repo groups the relevant information about the WRI-API Ecosystem in terms of Infrastructure, Deployment and Provisioning
 
+For information on architecture, see [this file](./architecture.md)
+
 ## Cloud Providers
 
 ### AWS
