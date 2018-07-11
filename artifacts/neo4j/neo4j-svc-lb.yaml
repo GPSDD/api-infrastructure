@@ -3,14 +3,16 @@ kind: Service
 metadata:
   name: neo4j-web
   labels:
-    component: neo4j
+    component: neo4j-instance
 spec:
   type: LoadBalancer
   ports:
-  - port: 7687
-    name: transport
   - port: 80
+    protocol: TCP
     targetPort: 7474
     name: web
+  - port: 7687
+    name: transport
+    targetPort: 7687
   selector:
-    component: neo4j
+    component: neo4j-instance
