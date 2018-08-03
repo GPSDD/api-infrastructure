@@ -115,9 +115,10 @@ For installation instructions, please see [this page](https://github.com/GPSDD/q
 Besides the dataset types above, there are other dataset types that are supported but only in index mode - thus
 not supporting querying. These are:
  
-- [RW](https://github.com/GPSDD/resource-watch-index-adapter)
-- [WB](https://github.com/GPSDD/world-bank-index-adapter)
-- [HDX](https://github.com/GPSDD/hdx-index-adapter)
+- [Resource Watch](https://github.com/GPSDD/resource-watch-index-adapter)
+- [World Bank](https://github.com/GPSDD/world-bank-index-adapter)
+- [HDX](https://github.com/GPSDD/hdx-index-connector)
+- [UN Statistics](https://github.com/GPSDD/un-index-connector)
 
 Unlike their full-featured peers, these datasets do not support querying, and thus do not require the
 Query component to fully function. However, they do update metadata automatically, something that is not
