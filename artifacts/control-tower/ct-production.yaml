@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: control-tower
-        image: rrequero/control-tower:1.0.46-data4sdgs
+        image: apihighways/control-tower:1.0.51-data4sdgs
         imagePullPolicy: Always
         resources:
           requests:
@@ -53,7 +53,7 @@ spec:
           - name: PUBLIC_URL
             value: http://load.apihighways.org
           - name: APP_NAME
-            value: "WRI API"
+            value: "APIHighways"
           - name: APP_LOGO
             value: https://apihighways.org/static/logos/logo-api-highways.svg
           - name: APP_COLOR
@@ -83,36 +83,6 @@ spec:
                 secretKeyRef:
                   name: ctsecrets
                   key: SPARKPOST_KEY
-          - name: GFW_TWITTER_CONSUMER_KEY
-            valueFrom:
-                secretKeyRef:
-                  name: ctsecrets
-                  key: GFW_TWITTER_CONSUMER_KEY
-          - name: GFW_TWITTER_CONSUMER_SECRET
-            valueFrom:
-                secretKeyRef:
-                  name: ctsecrets
-                  key: GFW_TWITTER_CONSUMER_SECRET
-          - name: GFW_FACEBOOK_CLIENT_ID
-            valueFrom:
-                secretKeyRef:
-                  name: ctsecrets
-                  key: GFW_FACEBOOK_CLIENT_ID
-          - name: GFW_FACEBOOK_CLIENT_SECRET
-            valueFrom:
-                secretKeyRef:
-                  name: ctsecrets
-                  key: GFW_FACEBOOK_CLIENT_SECRET
-          - name: GFW_GOOGLE_CLIENT_ID
-            valueFrom:
-                secretKeyRef:
-                  name: ctsecrets
-                  key: GFW_GOOGLE_CLIENT_ID
-          - name: GFW_GOOGLE_CLIENT_SECRET
-            valueFrom:
-                secretKeyRef:
-                  name: ctsecrets
-                  key: GFW_GOOGLE_CLIENT_SECRET
 
         ports:
           - containerPort: 9000

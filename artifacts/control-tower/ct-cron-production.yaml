@@ -12,15 +12,13 @@ spec:
     spec:
       containers:
       - name: control-tower-cron
-        image: rrequero/control-tower:1.0.41-cron
+        image: apihighways/control-tower:1.0.52-data4sdgs-cron
         imagePullPolicy: Always
         env:
           - name: PORT
             value: "9000"
           - name: LOGGER_TYPE
             value: console
-          - name: DEBUG
-            value: "oauth-plugin"
           - name: NODE_ENV
             value: prod
           - name: NODE_PATH
@@ -28,15 +26,15 @@ spec:
           - name: BASICAUTH_USERNAME
             value: vizzuality
           - name: CONFIRM_URL_REDIRECT
-            value: http://www.globalforestwatch.org
+            value: http://apihighways.data4sdgs.org/
           - name: PUBLIC_URL
-            value: http://production-api.globalforestwatch.org
+            value: http://load.apihighways.org
           - name: APP_NAME
-            value: "WRI API"
+            value: "APIHighways"
           - name: APP_LOGO
-            value: http://www.wri.org/sites/all/themes/wri/images/logo.png
+            value: https://apihighways.org/static/logos/logo-api-highways.svg
           - name: APP_COLOR
-            value: "#f1b319"
+            value: "#212020"
           - name: CT_MONGO_URI
             valueFrom:
                 secretKeyRef:
@@ -52,16 +50,16 @@ spec:
                 secretKeyRef:
                   name: ctsecrets
                   key: JWT_SECRET
-          - name: FASTLY_APIKEY
+          - name: BASICAUTH_PASSWORD
             valueFrom:
                 secretKeyRef:
                   name: ctsecrets
-                  key: FASTLY_APIKEY
-          - name: FASTLY_SERVICEID
+                  key: BASICAUTH_PASSWORD
+          - name: SPARKPOST_KEY
             valueFrom:
                 secretKeyRef:
                   name: ctsecrets
-                  key: FASTLY_SERVICEID
+                  key: SPARKPOST_KEY
         args:
           - startCron
       restartPolicy: Always
